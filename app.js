@@ -13,8 +13,21 @@ app.use(express.static('static'));
 // routes!!!!!!!!!!!!!!!!!!!!!
 app.use('/', routes);
 
+//404 error handler
+app.use(function(req, res, next){
+	res.status(404);
+	res.render('404', {title: 'This page is not found.'});
+});
+
+//500 error handler 
+app.use(function(err, req, res, next){
+	res.status(500);
+	res.render('500', {title: 'Internal Error'});
+});
 
 // Port 
+
+
 
 
 app.listen(3000); //listening for code on port 3000 local host. 
